@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Valentine?</title>
+  <title>Valentine 💖</title>
 
   <style>
     body {
@@ -11,19 +11,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      background: linear-gradient(135deg, #ffe6f0, #ffd6e8);
       font-family: "Segoe UI", Arial, sans-serif;
     }
 
     .card {
-      background: #fff;
+      background: #ffffff;
       padding: 40px 35px;
-      border-radius: 20px;
+      border-radius: 22px;
       text-align: center;
       max-width: 420px;
       width: 90%;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      position: relative;
     }
 
     h1 {
@@ -40,17 +39,17 @@
 
     .buttons {
       position: relative;
-      height: 80px;
+      height: 90px;
     }
 
     button {
       border: none;
-      padding: 12px 30px;
+      padding: 12px 32px;
       font-size: 16px;
       border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s ease;
       position: absolute;
+      transition: 0.3s ease;
     }
 
     #yes {
@@ -66,10 +65,11 @@
     }
 
     #no {
-      background: #ffd166;
-      color: #333;
+      background: linear-gradient(135deg, #cdb4db, #ffc8dd);
+      color: #4a4a4a;
       right: 10px;
       top: 0;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     }
   </style>
 </head>
@@ -77,10 +77,10 @@
 <body>
   <div class="card">
     <h1>Will you be my Valentine? 💖</h1>
-    <p>Think carefully… one of these buttons is very shy 😄</p>
+    <p>Be honest… one button is a little scared 🙈</p>
 
     <div class="buttons">
-      <button id="yes" onclick="goNext()">Yes</button>
+      <button id="yes" onclick="goNext()">Yes 💕</button>
       <button id="no" onmouseover="moveNo()">No</button>
     </div>
   </div>
@@ -89,7 +89,7 @@
     function moveNo() {
       const no = document.getElementById("no");
       const x = Math.random() * 240 - 120;
-      const y = Math.random() * 100 - 50;
+      const y = Math.random() * 120 - 60;
       const r = Math.random() * 30 - 15;
       no.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg)`;
     }
