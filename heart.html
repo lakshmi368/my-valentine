@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Heart 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #fff0f5, #ffb6c1, #ff69b4);
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+/* Container for heart */
+.container {
+  position: relative;
+  width: 450px;
+  height: 400px;
+  z-index: 1;
+}
+
+/* Big SVG heart */
+svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 25px #ff1493);
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Names inside heart */
+.names {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.names h1 {
+  margin: 8px 0;
+  font-size: 34px;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px #ff1493;
+}
+
+/* Floating glowing hearts */
+.glow-heart {
+  position: fixed;
+  font-size: 40px;
+  color: #ff1493;
+  opacity: 0.6;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-50vh) scale(1.2); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <!-- Heart SVG -->
+  <svg viewBox="0 0 512 512">
+    <path fill="#ff2e63" 
+      d="M471.7 73.3c-54.5-46.4-136-38.3-186.4 13.7L256 117.6l-29.3-30.6
+         C176.3 35 94.8 26.9 40.3 73.3c-62.5 53.2-66.1 149.8-9.9 207.9
+         l193.5 199.8c17 17.6 44.6 17.6 61.6 0l193.5-199.8
+         c56.2-58.1 52.6-154.7-7.3-207.9z"/>
+  </svg>
+
+  <!-- Names inside heart -->
+  <div class="names">
+    <h1>Surya</h1>
+    <h1>❤️</h1>
+    <h1>Lucky</h1>
+  </div>
+</div>
+
+<script>
+// Function to create big glowing hearts
+function createGlowHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'glow-heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (30 + Math.random() * 30) + 'px';
+  heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 8000);
+}
+
+// Create hearts continuously
+setInterval(createGlowHeart, 600);
+</script>
+
+</body>
+</html>
