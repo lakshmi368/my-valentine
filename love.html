@@ -18,58 +18,48 @@ body {
 
 .card {
   background: white;
-  padding: 35px;
-  border-radius: 22px;
-  max-width: 450px;
+  padding: 50px;
+  border-radius: 25px;
+  max-width: 600px; /* Increased width */
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-  z-index: 2;
-  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
 }
 
 h1 {
   color: #e63946;
+  font-size: 36px; /* Bigger title */
+}
+
+#thankYou {
+  font-size: 26px; /* Bigger thank you text */
+  color: #e63946;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 #msg {
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 20px; /* Bigger message text */
+  line-height: 1.8;
   color: red;
   display: none;
   white-space: pre-line;
-}
-
-.name {
-  font-size: 28px;
-  color: #ff1744;
-  font-weight: bold;
-  margin: 10px 0;
-  display: none;
-  animation: glowText 1.5s infinite;
-}
-
-.question {
-  font-size: 22px;
-  color: #d90429;
   margin-top: 20px;
-  display: none;
-  animation: pop 1s infinite;
-}
-
-.heart {
-  font-size: 45px;
-  animation: beat 1s infinite;
 }
 
 button {
-  margin-top: 20px;
-  padding: 12px 26px;
+  margin-top: 25px;
+  padding: 16px 32px; /* Bigger button */
   border: none;
   border-radius: 30px;
   background: #e63946;
   color: white;
-  font-size: 16px;
+  font-size: 18px; /* Bigger text on button */
   cursor: pointer;
+}
+
+.heart {
+  font-size: 60px; /* Bigger heart */
+  animation: beat 1s infinite;
 }
 
 @keyframes beat {
@@ -77,21 +67,11 @@ button {
   50% { transform: scale(1.25); }
 }
 
-@keyframes glowText {
-  0%,100% { text-shadow: 0 0 5px #ff758f; }
-  50% { text-shadow: 0 0 20px #ff1744; }
-}
-
-@keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
 /* floating hearts */
 .float-heart {
   position: fixed;
   bottom: -10px;
-  font-size: 20px;
+  font-size: 30px; /* Bigger floating hearts */
   animation: floatUp 6s linear forwards;
   opacity: 0.8;
 }
@@ -100,34 +80,23 @@ button {
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-110vh); opacity: 0; }
 }
-
-/* boom hearts */
-.boom {
-  position: fixed;
-  font-size: 30px;
-  animation: boom 1s forwards;
-}
-
-@keyframes boom {
-  from { transform: scale(0); opacity: 1; }
-  to { transform: scale(3); opacity: 0; }
-}
 </style>
 </head>
 
 <body>
 
-<div class="card" id="card">
+<div class="card">
+
+  <!-- Thank You at Top -->
+  <div id="thankYou">Thank you for accepting ❤️</div>
+
   <div class="heart">❤️</div>
   <h1>My Forever Valentine</h1>
 
-  <div class="name" id="name">PRASANNA 💖</div>
-
-  <button onclick="showLove()">Click to unlock my heart 💝</button>
+  <!-- Open Heart Button -->
+  <button id="openHeartBtn" onclick="showLove()">Open My Heart 💝</button>
 
   <div id="msg"></div>
-
-  <div class="question" id="question">Will you marry me? 💍🥹</div>
 </div>
 
 <script>
@@ -153,10 +122,7 @@ LUCKY`;
 let i = 0;
 
 function showLove() {
-  document.querySelector("button").style.display = "none";
-  document.getElementById("name").style.display = "block";
-  boom();
-
+  document.getElementById("openHeartBtn").style.display = "none";
   const msg = document.getElementById("msg");
   msg.style.display = "block";
 
@@ -165,35 +131,35 @@ function showLove() {
     i++;
     if (i >= text.length) {
       clearInterval(typing);
-      document.getElementById("question").style.display = "block";
+      addFinalButton(); // Add final button when typing finishes
     }
   }, 35);
 
   hearts();
 }
 
+// Floating hearts
 function hearts() {
   setInterval(() => {
     const h = document.createElement("div");
     h.className = "float-heart";
     h.innerHTML = "❤️";
     h.style.left = Math.random() * 100 + "vw";
-    h.style.fontSize = (16 + Math.random() * 18) + "px";
+    h.style.fontSize = (30 + Math.random() * 20) + "px"; // Bigger hearts
     document.body.appendChild(h);
     setTimeout(() => h.remove(), 6000);
-  }, 400);
+  }, 450);
 }
 
-function boom() {
-  for (let i = 0; i < 20; i++) {
-    const b = document.createElement("div");
-    b.className = "boom";
-    b.innerHTML = "💥❤️";
-    b.style.left = Math.random() * 100 + "vw";
-    b.style.top = Math.random() * 100 + "vh";
-    document.body.appendChild(b);
-    setTimeout(() => b.remove(), 1000);
-  }
+// Add final button to go to heart page
+function addFinalButton() {
+  const btn = document.createElement("button");
+  btn.textContent = "See Our Heart 💖";
+  btn.style.marginTop = "25px";
+  btn.onclick = () => {
+    window.location.href = "heart.html"; // Link to your heart page
+  };
+  document.querySelector(".card").appendChild(btn);
 }
 </script>
 
