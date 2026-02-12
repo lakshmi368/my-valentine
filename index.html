@@ -1,102 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Valentine 💖</title>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ffe6f0, #ffd6e8);
-      font-family: "Segoe UI", Arial, sans-serif;
-    }
+<style>
+/* Body with animated gradient background */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #ffb3c6, #ff6f91, #ffd1dc, #ffe6eb);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
 
-    .card {
-      background: #ffffff;
-      padding: 40px 35px;
-      border-radius: 22px;
-      text-align: center;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
-    h1 {
-      color: #e63946;
-      margin-bottom: 12px;
-      font-size: 28px;
-    }
+/* Card styling - smaller */
+.card {
+  background: linear-gradient(135deg, #ff9fc3, #ff6f91);
+  padding: 50px 35px; /* smaller padding */
+  border-radius: 25px;
+  text-align: center;
+  max-width: 400px; /* smaller width */
+  width: 85%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  color: white;
+  position: relative;
+}
 
-    p {
-      color: #6c757d;
-      font-size: 15px;
-      margin-bottom: 30px;
-    }
+/* Big glowing heart */
+.heart {
+  font-size: 80px; /* slightly smaller */
+  margin-bottom: 20px;
+  animation: beat 1.2s infinite;
+  text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff758f;
+}
 
-    .buttons {
-      position: relative;
-      height: 90px;
-    }
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
 
-    button {
-      border: none;
-      padding: 12px 32px;
-      font-size: 16px;
-      border-radius: 30px;
-      cursor: pointer;
-      position: absolute;
-      transition: 0.3s ease;
-    }
+/* Heading and message */
+h1 {
+  font-size: 30px; /* slightly smaller */
+  margin-bottom: 15px;
+}
 
-    #yes {
-      background: linear-gradient(135deg, #ff4d6d, #ff758f);
-      color: white;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
-    }
+p {
+  font-size: 17px;
+  margin-bottom: 35px;
+}
 
-    #yes:hover {
-      transform: translateX(-50%) scale(1.1);
-    }
+/* Buttons container */
+.buttons {
+  position: relative;
+  height: 80px;
+}
 
-    #no {
-      background: linear-gradient(135deg, #cdb4db, #ffc8dd);
-      color: #4a4a4a;
-      right: 10px;
-      top: 0;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-    }
-  </style>
+/* Buttons styling */
+button {
+  border: none;
+  padding: 12px 32px;
+  font-size: 17px;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Yes button - glowing */
+#yes {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#yes:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* No button - playful */
+#no {
+  background: linear-gradient(135deg, #cdb4db, #ffc8dd);
+  color: #4a4a4a;
+  right: 10px;
+  top: 0;
+}
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Will you be my Valentine? 💖</h1>
-    <p>Be honest… one button is a little scared 🙈</p>
 
-    <div class="buttons">
-      <button id="yes" onclick="goNext()">Yes 💕</button>
-      <button id="no" onmouseover="moveNo()">No</button>
-    </div>
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>Will you be my Valentine?</h1>
+  <p>Be honest… one button is a little scared 🙈</p>
+
+  <div class="buttons">
+    <button id="yes" onclick="goNext()">Yes 💕</button>
+    <button id="no" onmouseover="moveNo()">No</button>
   </div>
+</div>
 
-  <script>
-    function moveNo() {
-      const no = document.getElementById("no");
-      const x = Math.random() * 240 - 120;
-      const y = Math.random() * 120 - 60;
-      const r = Math.random() * 30 - 15;
-      no.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg)`;
-    }
+<script>
+// Move "No" button randomly
+function moveNo() {
+  const no = document.getElementById("no");
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 60 - 30;
+  const r = Math.random() * 15 - 7;
+  no.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg)`;
+}
 
-    function goNext() {
-      window.location.href = "love.html";
-    }
-  </script>
+// Go to love page
+function goNext() {
+  window.location.href = "love.html";
+}
+</script>
+
 </body>
 </html>
